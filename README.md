@@ -1,7 +1,7 @@
 # -
 Software Capstone Design
 
-네모안의 사람 
+# 네모안의 사람 
 
 
 # <과제 요약>
