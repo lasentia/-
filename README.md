@@ -17,4 +17,4 @@ pip install -r requirements.txt<br>
 
 python manage.py runserver 서버를 실행시켜 동작합니다.
 
-** 현재 bedt_model_57.pth ** 파일이 없음 용량이 너무 커서 에러 발생
+** 현재 best_model_57.pth ** 파일이 없음 용량이 너무 커서 에러 발생
