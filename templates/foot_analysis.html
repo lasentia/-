@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Foot Traffic Analysis</title>
+    <link href="{% static 'bootstrap-5.2.3-dist/css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color : black" href="{% url 'detect:index' %}"><strong>CCTVAS</strong></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color : grey" href="{% url 'detect:home_foot_traffic' %}" onmouseover="this.style.color='black';" onmouseout="this.style.color='grey';">
+                  Foot Traffic
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="{% url 'detect:home_foot_traffic' %}">개요</a></li>
+                  <li><a class="dropdown-item" href="{% url 'detect:stream_traffic' %}">모델 구동</a></li>
+                  <li><a class="dropdown-item" href="{% url 'detect:foot_analysis' %}">유동인구 분석</a></li>
+              </ul>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color : grey" href="{% url 'detect:home_crowd_estimation' %}" onmouseover="this.style.color='black';" onmouseout="this.style.color='grey';">
+                  Crowd Estimation
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="{% url 'detect:home_crowd_estimation' %}">개요</a></li>
+                  <li><a class="dropdown-item" href="{% url 'detect:stream_crowd' %}">모델 구동</a></li>
+                  <li><a class="dropdown-item" href="{% url 'detect:crowd_analysis' %}">인구밀집 분석</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-4">분석 결과</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card border-0 shadow chart-container">
+                    <iframe src="{% url 'detect:foot_line_chart' %}" class="w-100 h-150 border-0"></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card border-0 shadow chart-container">
+                    <iframe src="{% url 'detect:foot_line_chart_month' %}" class="w-100 h-150 border-0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+</body>
+</html>

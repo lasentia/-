@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Monthly yolo Line Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+			width: 100%;
+			max-width: 800px;
+			margin-bottom: 50px;
+		}
+	</style>
+    </style>
+</head>
+<body>
+
+    <div class="chart-container">
+        <canvas id="monthlyChart"></canvas>
+    </div>
+
+{% autoescape off %}
+<script>
+    // 월별 유동인구 차트
+    const monthlyChartData = JSON.parse('{{monthly_data | safe}}');
+    const monthlyLabels = monthlyChartData.map(data => `${data.date__month}월`);
+    const monthlyData = monthlyChartData.map(data => data.people_count_sum);
+
+    const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
+    const monthlyLineChart = new Chart(monthlyCtx, {
+        type: 'bar',
+        data: {
+            labels: monthlyLabels,
+            datasets: [{
+                label: '월별 유동인구',
+                data: monthlyData,
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                backgroundColor: 'rgba(255, 99, 132, 0.7)'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: `월별 유동인구`
+                }
+            }
+        }
+    });
+
+</script>
+{% endautoescape %}
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <link href="{% static 'bootstrap-5.2.3-dist/css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Hourly Crowd Line Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+<div style="max-width: 800px;">
+    <canvas id="lineChart"></canvas>
+</div>
+
+<!-- <form action="{% url 'detect:crowd_reset_record' %}" method="get">
+    {% csrf_token %}
+    <button type="submit">유동인구 데이터 초기화</button>
+</form> -->
+<form action="{% url 'detect:crowd_store_aggregated_data' %}" method="get">
+    {% csrf_token %}
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit"  class="btn btn-secondary">차트 갱신</button>
+</form>
+{% autoescape off %}
+
+<script>
+    const chartData = JSON.parse('{{hourly_data | safe}}');
+    const labels = chartData.map(data => `${data.time__hour}~${data.time__hour + 1}`);
+    const data = chartData.map(data => data.people_count_avg);
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString('ko-KR');
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    const lineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '시간대별 평균 인구 수',
+                data: data,
+                borderColor: 'rgb(117, 161, 19)',
+                backgroundColor:'rgba(117, 161, 19,0.5)',
+                fill:true,
+                tension: 0.1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: `현재 날짜: ${formattedDate}`
+                }
+            }
+        }
+    });
+</script>
+{% endautoescape %}
+
+</body>
+</html>
+
+
+
+

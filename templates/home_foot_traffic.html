@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SquareInPeople</title>
+    <link href="{% static 'bootstrap-5.2.3-dist/css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
+
+      ol li {
+        margin-bottom: 1rem;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+  </head>
+  <body id="bootstrap-overrides">
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" style="color : black" href="{% url 'detect:index' %}"><strong>CCTVAS</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color : grey" href="{% url 'detect:home_foot_traffic' %}" onmouseover="this.style.color='black';" onmouseout="this.style.color='grey';">
+                Foot Traffic
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="{% url 'detect:home_foot_traffic' %}">개요</a></li>
+                <li><a class="dropdown-item" href="{% url 'detect:stream_traffic' %}">모델 구동</a></li>
+                <li><a class="dropdown-item" href="{% url 'detect:foot_analysis' %}">유동인구 분석</a></li>
+            </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color : grey" href="{% url 'detect:home_crowd_estimation' %}" onmouseover="this.style.color='black';" onmouseout="this.style.color='grey';">
+                Crowd Estimation
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="{% url 'detect:home_crowd_estimation' %}">개요</a></li>
+                <li><a class="dropdown-item" href="{% url 'detect:stream_crowd' %}">모델 구동</a></li>
+                <li><a class="dropdown-item" href="{% url 'detect:crowd_analysis' %}">인구밀집 분석</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+      <div class="b-example-divider"></div>
+
+    <!-- 사용 방법 Section -->
+    <section>
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-lg-6">
+            <h2 class="mb-4">실시간 유동인구 분석 시스템 사용 방법</h2>
+            <ol>
+              <li>모델 구동 페이지에 들어가면 팝업창이 화면에 띄워집니다.</li>
+              <li>해당 팝업창은 분석할 영상의 가장 첫 번째 프레임입니다.</li>
+              <li>두 번의 클릭으로 사람들이 지나가는 방향 가운데에 라인을 그립니다.</li>
+              <li>라인이 그려졌다면, q 혹은 팝업창을 내려 모델을 구동합니다.</li>
+            </ol>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <img src="{%static 'assets/howtostart.gif'  %}" class="img-fluid rounded" alt="이미지 설명">
+          </div>
+        </div>
+      </div>
+    </section>
+      <div class="b-example-divider"></div>
+      
+        <div class="my-3 p-3 bg-body rounded shadow-sm">              
+          
+          <div class="container col-xxl-8 px-4 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+              <div class="col-10 col-sm-8 col-lg-6">
+                <img src="https://velog.velcdn.com/images/qtly_u/post/77e3a790-e614-4371-ba89-c92017bc6a14/image.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+              </div>
+              <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">YOLO 란?</h1>
+                <p class="lead">object detection을 하는 딥러닝 알고리즘 모델 중 하나이며, 인풋으로 사진을 넣으면 해당 사진에 있는 물체의 종류 확률과 위치를 box로 표시 해주는 것, yolo는 실시간에 적용가능할 정도로 빠르고 성능이 좋습니다.
+                하나의 컨볼루션 네트워크(convolutional network)가 여러 bounding box와 그 bounding box의 클래스 확률을 동시에 계산해 줍니다. YOLO는 이미지 전체를 학습하여 곧바로 검출 성능(detection performance)을 최적하여 검출 합니다.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                  <button type="button" class="btn btn-primary btn-lg px-4 me-md-2"><a class="nav" href="https://www.youtube.com/embed/tCT2VehVets">관련 영상</a></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    </section>
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  
+  </body>
+</html>
