@@ -1,7 +1,7 @@
 # People-in-square
 Software Capstone Design
 
-가상환경을 생성 후 
+가상환경을 생성 후 <br>
 pip install django <br>
 pip install -r requirements.txt<br>
 
