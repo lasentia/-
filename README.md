@@ -13,7 +13,7 @@ Crowd Counting 모델을 이용해 인구 밀집도를 파악하고, 사전에 �
 pip install django <br>
 pip install -r requirements.txt<br>
 
-model_best_57.pth 파일 다운. 
+model_best_57.pth 파일 다운. <br> 
 https://drive.google.com/drive/folders/1_mV6rD0scOu7VWAn_5PoaqwyC6kO5u1d?usp=sharing
 
 
