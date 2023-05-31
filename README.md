@@ -13,8 +13,12 @@ Crowd Counting 모델을 이용해 인구 밀집도를 파악하고, 사전에 �
 pip install django <br>
 pip install -r requirements.txt<br>
 
+model_best_57.pth 파일 다운. 
+https://drive.google.com/drive/folders/1_mV6rD0scOu7VWAn_5PoaqwyC6kO5u1d?usp=sharing
+
+
 장고를 실행하여 부족한 모듈을 설치합니다. (requirements.txt.에 들어있지 않는 모듈이 있습니다.)<br>
 
 python manage.py runserver 서버를 실행시켜 동작합니다.
 
-** 현재 best_model_57.pth ** 파일이 없음 용량이 너무 커서 에러 발생
+** 현재  ** 파일이 없음 용량이 너무 커서 에러 발생
