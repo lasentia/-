@@ -20,5 +20,3 @@ https://drive.google.com/drive/folders/1_mV6rD0scOu7VWAn_5PoaqwyC6kO5u1d?usp=sha
 장고를 실행하여 부족한 모듈을 설치합니다. (requirements.txt.에 들어있지 않는 모듈이 있습니다.)<br>
 
 python manage.py runserver 서버를 실행시켜 동작합니다.
-
-** 현재  ** 파일이 없음 용량이 너무 커서 에러 발생
